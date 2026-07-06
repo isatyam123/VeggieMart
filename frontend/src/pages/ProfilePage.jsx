@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import Loader from '../components/Loader';
 import { CheckCircle, Clock } from 'lucide-react';
@@ -24,7 +24,7 @@ const ProfilePage = () => {
               Authorization: `Bearer ${userInfo.token}`,
             },
           };
-          const { data } = await axios.get('/api/orders/myorders', config);
+          const { data } = await api.get('/orders/myorders', config);
           setOrders(data);
           setLoading(false);
         } catch (err) {

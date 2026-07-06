@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import Loader from '../components/Loader';
@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('/api/products');
+        const { data } = await api.get('/products');
         setProducts(data.slice(0, 4)); // Show only top 4 as featured
         setLoading(false);
       } catch (err) {

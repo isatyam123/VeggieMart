@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const AuthContext = createContext();
 
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   }, [userInfo]);
 
   useEffect(() => {
-    const interceptor = axios.interceptors.response.use(
+    const interceptor = api.interceptors.response.use(
       (response) => response,
       (error) => {
         if (error.response && error.response.status === 401) {
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
         return Promise.reject(error);
       }
     );
-    return () => axios.interceptors.response.eject(interceptor);
+    return () => api.interceptors.response.eject(interceptor);
   }, []);
 
   const login = async (email, password) => {
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       };
-      const { data } = await axios.post('/api/users/login', { email, password }, config);
+      const { data } = await api.post('/users/login', { email, password }, config);
       setUserInfo(data);
       setLoading(false);
       return data;
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       };
-      const { data } = await axios.post('/api/users', { name, email, password }, config);
+      const { data } = await api.post('/users', { name, email, password }, config);
       setUserInfo(data);
       setLoading(false);
       return data;

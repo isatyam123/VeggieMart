@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../api';
 import toast from 'react-hot-toast';
 
 const CheckoutPage = () => {
@@ -41,8 +41,8 @@ const CheckoutPage = () => {
         },
       };
 
-      const { data } = await axios.post(
-        `/api/orders`,
+      const { data } = await api.post(
+        `/orders`,
         {
           orderItems: cartItems,
           shippingAddress: { fullName, phoneNumber, address, city, pincode },

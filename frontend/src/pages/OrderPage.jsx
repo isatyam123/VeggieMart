@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
@@ -22,7 +22,7 @@ const OrderPage = () => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         };
-        const { data } = await order ? { data: order } : await axios.get(`/api/orders/${id}`, config);
+        const { data } = await order ? { data: order } : await api.get(`/orders/${id}`, config);
         if(!order || data._id !== id){
              setOrder(data);
         }
@@ -63,10 +63,10 @@ const OrderPage = () => {
       };
 
       // 1. Get Razorpay Key ID
-      const { data: keyId } = await axios.get('/api/payment/razorpay');
+      const { data: keyId } = await api.get('/payment/razorpay');
       
       // 2. Create Razorpay order
-      const { data: rpOrder } = await axios.post(`/api/orders/${id}/razorpay`, {}, config);
+      const { data: rpOrder } = await api.post(`/orders/${id}/razorpay`, {}, config);
 
       // Real Razorpay Flow
       const res = await loadRazorpayScript();
@@ -94,8 +94,8 @@ const OrderPage = () => {
                  Authorization: `Bearer ${userInfo.token}`,
                },
              };
-            const { data: updatedOrder } = await axios.post(
-              `/api/orders/${id}/pay`,
+            const { data: updatedOrder } = await api.post(
+              `/orders/${id}/pay`,
               {
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_order_id: response.razorpay_order_id,

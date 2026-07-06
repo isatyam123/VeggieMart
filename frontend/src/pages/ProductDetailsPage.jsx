@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useCart } from '../context/CartContext';
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
@@ -19,7 +19,7 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`/api/products/${id}`);
+        const { data } = await api.get(`/products/${id}`);
         setProduct(data);
         setLoading(false);
       } catch (err) {

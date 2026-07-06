@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import ProductCard from '../components/ProductCard';
 import Loader from '../components/Loader';
 import { Search } from 'lucide-react';
@@ -14,7 +14,7 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+        const { data } = await api.get(`/products?keyword=${keyword}`);
         setProducts(data);
         setLoading(false);
       } catch (err) {
