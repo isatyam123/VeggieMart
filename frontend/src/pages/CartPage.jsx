@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Trash2, ShoppingBag } from 'lucide-react';
-import { getImageUrl } from '../api';
 
 const CartPage = () => {
   const { cartItems, addToCart, removeFromCart, itemsPrice } = useCart();
@@ -32,7 +31,7 @@ const CartPage = () => {
               <ul className="divide-y divide-gray-200">
                 {cartItems.map((item) => (
                   <li key={item.product} className="p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4">
-                    <img src={getImageUrl(item.image)} alt={item.name} className="w-24 h-24 object-cover rounded-md" />
+                    <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-md" />
                     <div className="flex-grow text-center sm:text-left">
                       <Link to={`/product/${item.product}`} className="text-lg font-semibold text-gray-900 hover:text-grocery">
                         {item.name}

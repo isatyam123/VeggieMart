@@ -12,13 +12,4 @@ const api = axios.create({
     // while components continue to display their existing loading spinners.
 });
 
-// Helper to reliably construct absolute image URLs from the backend
-export const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
-    // If it's already an absolute URL (e.g. Unsplash), return as-is
-    if (imagePath.startsWith('http')) return imagePath;
-    // Otherwise prepend the backend URL
-    return `${BASE_URL}${imagePath}`;
-};
-
 export default api;
