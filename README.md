@@ -4,9 +4,19 @@
 
 ### A Full-Stack MERN E-Commerce Platform for Fresh Vegetable Shopping
 
-Built with **React**, **Node.js**, **Express**, **MongoDB Atlas**, **JWT Authentication**, and **Razorpay Test Mode**.
+Built with **React**, **Node.js**, **Express.js**, **MongoDB Atlas**, **JWT Authentication**, and **Razorpay Test Mode**.
 
 </div>
+
+---
+
+## 🚀 Live Demo
+
+🌐 **Frontend:** https://veggie-mart-nine.vercel.app
+
+⚙️ **Backend API:** https://veggiemart-s603.onrender.com/api
+
+> **Note:** The backend is hosted on Render's free tier. The first request after inactivity may take **30–60 seconds** while the server wakes up.
 
 ---
 
@@ -63,27 +73,16 @@ The application follows a modern client-server architecture with RESTful APIs, s
 
 ---
 
-# 🏗 Tech Stack
+## 🛠️ Tech Stack
 
-## Frontend
-
-- React (Vite)
-- React Router
-- Tailwind CSS
-- Axios
-- Context API
-- React Hot Toast
-- Lucide React
-
-## Backend
-
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
-- JWT Authentication
-- bcryptjs
-- Razorpay SDK
+| Category | Technologies |
+|----------|--------------|
+| Frontend | React, Vite, Tailwind CSS, React Router, Axios, Context API |
+| Backend | Node.js, Express.js |
+| Database | MongoDB Atlas, Mongoose |
+| Authentication | JWT, bcryptjs |
+| Payment | Razorpay Test Mode |
+| Deployment | Vercel, Render |
 
 ---
 
@@ -122,7 +121,7 @@ VeggieMart
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/veggiemart.git
+git clone https://github.com/isatyam123/VeggieMart.git
 
 cd veggiemart
 ```
@@ -265,6 +264,17 @@ Verify Signature
       ▼
 Update Order Status
 ```
+
+---
+
+## ☁️ Deployment
+
+| Service | Platform |
+|----------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
+| Payment Gateway | Razorpay Test Mode |
 
 ---
 
