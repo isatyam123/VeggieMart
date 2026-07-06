@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import api from '../api';
+import api, { getImageUrl } from '../api';
 import { useAuth } from '../context/AuthContext';
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
@@ -182,7 +182,7 @@ const OrderPage = () => {
             <ul className="divide-y divide-gray-200">
               {order.orderItems.map((item, index) => (
                 <li key={index} className="py-3 flex items-center gap-4">
-                  <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                  <img src={getImageUrl(item.image)} alt={item.name} className="w-16 h-16 object-cover rounded" />
                   <div className="flex-grow text-sm">
                     <Link to={`/product/${item.product}`} className="font-semibold hover:text-grocery">
                       {item.name}

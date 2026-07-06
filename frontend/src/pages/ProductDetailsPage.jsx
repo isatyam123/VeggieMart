@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import api from '../api';
+import api, { getImageUrl } from '../api';
 import { useCart } from '../context/CartContext';
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
@@ -57,7 +57,7 @@ const ProductDetailsPage = () => {
         <div className="flex flex-col md:flex-row gap-8 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
           <div className="md:w-1/2">
             <img
-              src={product.image}
+              src={getImageUrl(product.image)}
               alt={product.name}
               className="w-full h-96 object-cover rounded-xl"
             />

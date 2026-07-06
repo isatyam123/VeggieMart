@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../api';
 
 const ProductCard = ({ product }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition duration-300 overflow-hidden border border-gray-100 flex flex-col">
       <Link to={`/product/${product._id}`} className="block relative h-48 overflow-hidden">
         <img
-          src={product.image}
+          src={getImageUrl(product.image)}
           alt={product.name}
           className="w-full h-full object-cover transform hover:scale-110 transition duration-500"
         />
