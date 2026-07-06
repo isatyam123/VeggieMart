@@ -1,9 +1,15 @@
 import axios from 'axios';
 
-// Ensure the API URL correctly falls back for production if env var is missing,
-// and doesn't end up as 'undefined/api'
-const envUrl = import.meta.env.VITE_API_URL;
-const BASE_URL = (envUrl && envUrl !== 'undefined') ? envUrl : 'https://veggiemart-s603.onrender.com';
+let BASE_URL = import.meta.env.VITE_API_URL;
+
+// Strictly enforce the production HTTPS URL if the env var is missing,
+// undefined, or incorrectly pointing to localhost in a deployed environment.
+if (!BASE_URL || BASE_URL === 'undefined' || (import.meta.env.MODE === 'production' && BASE_URL.includes('localhost'))) {
+    BASE_URL = 'https://veggiemart-s603.onrender.com';
+}
+
+// Ensure no trailing slashes that might duplicate with /api
+BASE_URL = BASE_URL.replace(/\/$/, '');
 
 const api = axios.create({
     baseURL: `${BASE_URL}/api`,
